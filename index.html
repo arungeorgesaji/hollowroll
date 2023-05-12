@@ -2,23 +2,49 @@
   <style>
     .video-container {
       width: 100%;
-      height: 90vh; /* Adjust the height as needed */
+      height: 90vh;
       display: flex;
       justify-content: center;
       align-items: center;
       margin: 0;
       padding: 0;
       background-color: black;
+      position: relative;
     }
 
     .video-container video {
       max-width: 100%;
       max-height: 100%;
+      display: block;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
 <body>
   <div class="video-container">
-    <video src="toca.mp4" id="myVideo" loop="true" autoplay></video>
+    <video src="hkclips.mp4" id="myVideo" loop="true"></video>
+    <button id="playButton">Play</button>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var video = document.getElementById("myVideo");
+        var playButton = document.getElementById("playButton");
+
+        if (video.autoplay) {
+          video.play();
+          playButton.style.display = "none";
+        } else {
+          playButton.addEventListener("click", function () {
+            video.play();
+            playButton.style.display = "none";
+          });
+        }
+      });
+    </script>
   </div>
 </body>
